@@ -11,17 +11,17 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         with open('phones.csv', 'r') as csvfile:
 
-            phone_reader = csv.reader(csvfile, delimiter=';')
-            next(phone_reader)
+            phones = csv.reader(csvfile, delimiter=';')
+            next(phones)
 
-            for line in phone_reader:
-                phones = Phone(
-                    id=line[0],
-                    name=line[1],
-                    image=line[2],
-                    price=line[3],
-                    release_date=line[4],
-                    lte_exists=line[5]
+            for phone in phones:
+                phone_bd = Phone(
+                    id=phone[0],
+                    name=phone[1],
+                    image=phone[2],
+                    price=phone[3],
+                    release_date=phone[4],
+                    lte_exists=phone[5]
                 )
-                phones.save()
+                phone_bd.save()
 
