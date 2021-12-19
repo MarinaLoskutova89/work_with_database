@@ -21,7 +21,7 @@ def show_catalog(request):
         'Error'
 
     context = {
-        'phone': phones
+        'phones': phones
     }
     return render(request, template, context)
 

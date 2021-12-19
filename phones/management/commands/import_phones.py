@@ -15,7 +15,7 @@ class Command(BaseCommand):
             next(phones)
 
             for phone in phones:
-                phone_bd = Phone.object.create(id=phone[0], name=phone[1], image=phone[2],
+                phone_bd = Phone.objects.create(id=phone[0], name=phone[1], image=phone[2],
                                                price=phone[3], release_date=phone[4], lte_exists=phone[5])
             return phone_bd
 
