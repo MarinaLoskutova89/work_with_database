@@ -1,3 +1,5 @@
+
+
 from django.shortcuts import render, redirect, reverse
 
 from phones.models import Phone
@@ -29,12 +31,8 @@ def show_catalog(request):
 def show_product(request, slug):
     template = 'product.html'
     phones = Phone.objects.all()
-    if slug in phones.slug:
-        context = {
-            'phone': phones
-        }
-    else:
-        context = {
-            'phone': None
-        }
+    phone = phones.get(slug=slug)
+    context = {
+        'phone': phone
+    }
     return render(request, template, context)
